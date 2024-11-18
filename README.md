@@ -11,9 +11,8 @@ This script requires the following:
 #Script Overview
 # 1. Loading the Dataset
 The script begins by loading the raw dataset using the pandas library.
-```bash
-python
-Copy code
+<!-- Python block -->
+```python
 import pandas as pd
 import re
 
