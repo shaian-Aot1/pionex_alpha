@@ -5,13 +5,13 @@ This script performs data cleaning and validation on a raw dataset of crypto tra
 # Requirements
 This script requires the following:
 
-** Python 3.6 or higher
-** Pandas library
-** Regular Expressions (re) library
-Script Overview
-1. Loading the Dataset
+* Python 3.6 or higher
+* Pandas library
+* Regular Expressions (re) library
+#Script Overview
+# 1. Loading the Dataset
 The script begins by loading the raw dataset using the pandas library.
-
+```bash
 python
 Copy code
 import pandas as pd
@@ -22,6 +22,7 @@ raw_file_path = '/content/241k-Singapore-pionex.com-Crypto-Trading-Bots-UsersDB-
 
 # Load the dataset
 df = pd.read_csv(raw_file_path)
+```
 Image: Highlight the lines where the dataset is loaded.
 
 2. Dropping Unwanted Columns
