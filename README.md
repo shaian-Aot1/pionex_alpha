@@ -1,13 +1,13 @@
-# pionex_alpha
-Data Cleaning Script for Crypto Trading Bots User Database
+# Pionex_alpha
+# Data Cleaning Script for Crypto Trading Bots User Database
 This script performs data cleaning and validation on a raw dataset of crypto trading bot users. It removes unwanted data, validates fields, and prepares a cleaned dataset for further analysis. Invalid data is saved to a separate file for review.
 
-Requirements
+# Requirements
 This script requires the following:
 
-Python 3.6 or higher
-Pandas library
-Regular Expressions (re) library
+** Python 3.6 or higher
+** Pandas library
+** Regular Expressions (re) library
 Script Overview
 1. Loading the Dataset
 The script begins by loading the raw dataset using the pandas library.
