@@ -22,54 +22,50 @@ raw_file_path = '/content/241k-Singapore-pionex.com-Crypto-Trading-Bots-UsersDB-
 # Load the dataset
 df = pd.read_csv(raw_file_path)
 ```
-Image: Highlight the lines where the dataset is loaded.
 
-2. Dropping Unwanted Columns
+# 2. Dropping Unwanted Columns
 Unnecessary columns (lang and BrandCode) are removed to simplify the dataset.
-
-python
-Copy code
+<!-- Python block -->
+```python
 # Drop unwanted columns
 df = df.drop(columns=['lang', 'BrandCode'], errors='ignore')
-Image: Highlight the line where columns are dropped.
+```
 
-3. Reordering Columns
+# 3. Reordering Columns
 The dataset columns are reordered for consistency and readability.
 
-python
-Copy code
+<!-- Python block -->
+```python
 # Reorder columns
 columns_order = ['RegistrationDate', 'First Name', 'Last Name', 'Phone', 'Country', 'Email']
 df = df[columns_order]
-Image: Highlight the lines where column order is specified and applied.
+```
 
-4. Validating Email Addresses
+# 4. Validating Email Addresses
 An email validation function checks if the email addresses in the dataset match a standard email format.
 
-python
-Copy code
+<!-- Python block -->
+```python
 # Email validation function
 def validate_email(email):
     email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
     return bool(re.match(email_regex, str(email)))
-Image: Highlight the validate_email function.
+```
 
-5. Identifying Invalid Rows
+# 5. Identifying Invalid Rows
 The script identifies rows with missing values, duplicate entries, and invalid email addresses.
 
-python
-Copy code
+<!-- Python block -->
+```python
 # Identify invalid rows
 rows_with_missing_values = df[df.isnull().any(axis=1)]
 rows_with_duplicates = df[df.duplicated()]
 rows_with_invalid_emails = df[~df['Email'].apply(validate_email)]
-Image: Highlight each line where invalid rows are identified.
-
-6. Removing Invalid Rows
+```
+# 6. Removing Invalid Rows
 All invalid rows are removed from the original dataset.
 
-python
-Copy code
+
 # Combine all invalid rows
 invalid_rows = pd.concat([rows_with_missing_values, rows_with_duplicates, rows_with_invalid_emails]).drop_duplicates()
 
