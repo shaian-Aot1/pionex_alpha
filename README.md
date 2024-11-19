@@ -65,56 +65,54 @@ rows_with_invalid_emails = df[~df['Email'].apply(validate_email)]
 # 6. Removing Invalid Rows
 All invalid rows are removed from the original dataset.
 
-
+<!-- Python block -->
+```python
 # Combine all invalid rows
 invalid_rows = pd.concat([rows_with_missing_values, rows_with_duplicates, rows_with_invalid_emails]).drop_duplicates()
 
 # Remove invalid rows from the original dataset
 df = df.drop(invalid_rows.index)
-Image: Highlight the lines where invalid rows are combined and removed.
+```
 
-7. Standardizing Name Fields
+# 7. Standardizing Name Fields
 First and last names are capitalized, and the column names are renamed for consistency.
 
-python
-Copy code
+<!-- Python block -->
+```python
 # Capitalize 'First Name' and 'Last Name', rename to 'first_name' and 'last_name'
 df['First Name'] = df['First Name'].str.capitalize()
 df['Last Name'] = df['Last Name'].str.capitalize()
 df = df.rename(columns={'First Name': 'first_name', 'Last Name': 'last_name'})
-Image: Highlight the lines where names are capitalized and columns renamed.
+```
 
-8. Saving Invalid Data
+# 8. Saving Invalid Data
 Rows identified as invalid are saved to a separate CSV file for review.
 
-python
-Copy code
+<!-- Python block -->
+```python
 # Save invalid data to a separate file
 invalid_data_file_path = '/content/invalid_data.csv'
 invalid_rows.to_csv(invalid_data_file_path, index=False)
-Image: Highlight the lines where invalid data is saved.
+```
 
-9. Saving the Cleaned Dataset
+# 9. Saving the Cleaned Dataset
 The cleaned dataset is saved to a new CSV file.
-
-python
-Copy code
+<!-- Python block -->
+```python
 # Save the cleaned dataset
 cleaned_file_path = '/content/cleaned_phoniex.csv'
 df.to_csv(cleaned_file_path, index=False)
-Image: Highlight the lines where the cleaned dataset is saved.
-
-10. Summary of Operations
+```
+# 10. Summary of Operations
 The script prints a summary of the total rows removed and the file paths for the saved datasets.
 
-python
-Copy code
+<!-- Python block -->
+```python
 # Print summary of operations
 print(f"Total rows removed: {len(invalid_rows)}")
 print(f"Invalid data saved to: {invalid_data_file_path}")
 print(f"Cleaned dataset saved to: {cleaned_file_path}")
-Image: Highlight the lines where the summary is printed.
-
-Output Files
-Cleaned Dataset: /content/cleaned_phoniex.csv
-Invalid Data: /content/invalid_data.csv
+```
+# Output Files
+* Cleaned Dataset: /content/cleaned_phoniex.csv
+* Invalid Data: /content/invalid_data.csv
